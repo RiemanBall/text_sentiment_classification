@@ -1,5 +1,4 @@
 # model.py
-
 import numpy as np
 import tensorflow as tf
 from tensorflow.keras.layers import Input, Embedding, LSTM, Bidirectional, Dropout, Dense, LayerNormalization
@@ -20,11 +19,11 @@ class BiLstmTuner(HyperModel):
 
         x = self.embedding_layer(sentence_indices)
         x = Dropout(dp_rate)(x)
-        x = Bidirectional(LSTM(units = hp.Int('lstm1', min_value = 64, max_value = 256, step = 32), 
+        x = Bidirectional(LSTM(units = hp.Int('lstm1', min_value = 64, max_value = 128, step = 32), 
                                return_sequences = True, 
                                dropout = dp_rate ))(x)
         x = LayerNormalization(axis = 1)(x)
-        x = Bidirectional(LSTM(units = hp.Int('lstm2', min_value = 64, max_value = 256, step = 32), 
+        x = Bidirectional(LSTM(units = hp.Int('lstm2', min_value = 64, max_value = 128, step = 32), 
                                dropout = dp_rate ))(x)
         x = LayerNormalization(axis = 1)(x)
         outputs = Dense(1)(x)
@@ -32,7 +31,7 @@ class BiLstmTuner(HyperModel):
         model = tf.keras.Model(inputs = sentence_indices, outputs = outputs)
 
         model.compile(
-            optimizer = tf.keras.optimizers.Adam(learning_rate = hp.Float('lr', 1e-6, 1e-2)),
+            optimizer = tf.keras.optimizers.Adam(learning_rate = hp.Float('lr', 1e-6, 1e-3)),
             loss = tf.keras.losses.BinaryCrossentropy(from_logits = True),
             metrics = ['accuracy'],
         )
