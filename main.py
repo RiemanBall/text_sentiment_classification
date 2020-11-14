@@ -26,11 +26,12 @@ def main():
     parser.add_argument("--lstm2", type = int, default = 32, help = "Hidden dimension of second LSTM")
     parser.add_argument("--dp_rate", type = float, default = 0.5, help = "Dropout rate (percentage of droping)")
     parser.add_argument("--lr", type = float, default = 1e-3, help = "Learning rate")
-    parser.add_argument("--epochs", type = float, default = 1, help = "epochs")
-    parser.add_argument("--epochs_before_search", type = float, default = 1, help = "epochs_before_search")
-    parser.add_argument("--epochs_after_search", type = float, default = 1, help = "epochs_after_search")
-    parser.add_argument("--max_trials", type = float, default = 1, help = "max_trials for kerastuner")
-    parser.add_argument("--executions_per_trial", type = float, default = 1, help = "executions_per_trial for kerastuner")
+    parser.add_argument("--epochs", type = int, default = 1, help = "epochs")
+    
+    parser.add_argument("--epochs_before_search", type = int, default = 1, help = "epochs_before_search")
+    parser.add_argument("--epochs_after_search", type = int, default = 1, help = "epochs_after_search")
+    parser.add_argument("--max_trials", type = int, default = 1, help = "max_trials for kerastuner")
+    parser.add_argument("--executions_per_trial", type = int, default = 1, help = "executions_per_trial for kerastuner")
 
     args = parser.parse_args()
 
