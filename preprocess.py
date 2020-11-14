@@ -114,7 +114,7 @@ class Preprocess():
         """
         sentence_list = []
         for i, sen in enumerate(sentences):
-            print('sentence count #{}'.format(i+1), end='\r')
+            # print('sentence count #{}'.format(i+1), end='\r')
             sentence_list.append(self.sentence_word2idx(sen))
 
         print()
