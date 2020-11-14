@@ -6,6 +6,8 @@ import matplotlib.pyplot as plt
 import tensorflow as tf
 import numpy as np
 from sklearn.model_selection import train_test_split
+import warnings
+warnings.filterwarnings('ignore')
 
 import w2v
 from utils import *
